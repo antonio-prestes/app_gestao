@@ -19,3 +19,20 @@ use App\Http\Controllers\SobreNosController;
 Route::get('/', [PrincipalController::class, 'principal']);
 Route::get('/sobre', [SobreNosController::class, 'sobre']);
 Route::get('/contato', [ContatoController::class, 'contato']);
+
+Route::get('/login', function () {
+    return 'login';
+});
+
+Route::prefix('/app')->group(function () {
+    Route::get('/clientes', function () {
+        return 'clientes';
+    });
+    Route::get('/fornecedores', function () {
+        return 'fornecedores';
+    });
+    Route::get('/produtos', function () {
+        return 'produtos';
+    });
+});
+
