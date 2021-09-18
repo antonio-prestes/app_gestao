@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PrincipalController;
 use App\Http\Controllers\ContatoController;
 use App\Http\Controllers\SobreNosController;
+use App\Http\Controllers\FornecedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,20 +20,20 @@ use App\Http\Controllers\SobreNosController;
 Route::get('/', [PrincipalController::class, 'principal'])->name('site.index');
 Route::get('/sobre', [SobreNosController::class, 'sobre'])->name('site.sobre');
 Route::get('/contato', [ContatoController::class, 'contato'])->name('site.contato');
-Route::get('/login', function () { return 'login';});
+Route::get('/login', function () {
+    return 'login';
+});
 
 Route::prefix('/app')->group(function () {
     Route::get('/clientes', function () {
         return 'clientes';
     })->name('app.clientes');
-    Route::get('/fornecedores', function () {
-        return 'fornecedores';
-    })->name('app.fornecedores');;
+    Route::get('/fornecedores', [FornecedorController::class, 'index'])->name('app.fornecedores');
     Route::get('/produtos', function () {
         return 'produtos';
     })->name('app.produtos');;
 });
 
-Route::fallback(function (){
-    echo 'A pagina acessada não existe, <a href="'.route('site.index').'">clique aqui</a> para ser redirecionado';
+Route::fallback(function () {
+    echo 'A pagina acessada não existe, <a href="' . route('site.index') . '">clique aqui</a> para ser redirecionado';
 });
