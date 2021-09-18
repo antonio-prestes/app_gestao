@@ -7,6 +7,7 @@
 </head>
 
 <body>
+@include('site.layouts._partials.top')
 @yield('content')
 </body>
 </html>
