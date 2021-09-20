@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSiteContatosTable extends Migration
+class CreateUnidadesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class CreateSiteContatosTable extends Migration
      */
     public function up()
     {
-        Schema::create('site_contatos', function (Blueprint $table) {
+        Schema::create('unidades', function (Blueprint $table) {
             $table->id();
+            $table->string('unidade', 5); //cm, mn, kg
+            $table->string('descricao', 30);
             $table->timestamps();
-            $table->string('nome', 50);
-            $table->integer('telefone');
-            $table->string('email', 50);
-            $table->string('motivo_contato', 50);
-            $table->text('mensagem');
         });
     }
 
@@ -31,6 +28,6 @@ class CreateSiteContatosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('site_contatos');
+        Schema::dropIfExists('unidades');
     }
 }
