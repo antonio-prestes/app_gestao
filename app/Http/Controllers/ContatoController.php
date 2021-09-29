@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\MotivoContato;
 use App\Models\SiteContato;
 use Illuminate\Http\Request;
 
@@ -23,11 +24,7 @@ class ContatoController extends Controller
         //$contato->fill($request->all());
         //$contato->save();
 
-        $motivo_contatos = [
-            '1'=>'Dúvida',
-            '2'=>'Elogio',
-            '3'=>'Reclamação',
-        ];
+        $motivo_contatos = MotivoContato::all();
 
         return view('site.contato',['title'=>'Contato', 'motivo_contatos'=>$motivo_contatos]);
 
