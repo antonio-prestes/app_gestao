@@ -17,6 +17,5 @@
         </div>
     </div>
 
-
     @include('site.layouts._partials.footer')
 @endsection
