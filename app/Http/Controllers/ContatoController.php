@@ -38,7 +38,7 @@ class ContatoController extends Controller
             'mensagem.max' => ' O campo mensagem pode ter no máximo 200 caracteres'
         ];
 
-        $request->validate($regras,$feedback);
+        $request->validate($regras, $feedback);
         SiteContato::create($request->all());
         return redirect()->route('site.index');
     }
