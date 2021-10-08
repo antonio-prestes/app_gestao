@@ -22,5 +22,6 @@ class LogAcessoMiddleware
 
         LogAcesso::create(['log' => "IP $ip requisitou a rota $rota"]);
         return $next($request);
+
     }
 }

@@ -15,9 +15,10 @@ class AutenticacaoMiddleware
      * @param \Closure $next
      * @return mixed
      */
-    public function handle(Request $request, Closure $next)
+    public function handle(Request $request, Closure $next, $metodo_autenticacao)
     {
-        if (true) {
+        echo $metodo_autenticacao;
+        if (false) {
             return $next($request);
         } else {
             return Response("Acesso negado!!");
