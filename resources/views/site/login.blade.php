@@ -13,10 +13,12 @@
                     @csrf
                     <input type="text" value="{{old('user')}}" name="user" placeholder="Usuário" class="borda-preta">
                     {{ $errors->has('user') ? $errors->first('user') : ''}}
-                    <input type="password" value="{{old('password')}}" name="password" placeholder="Senha" class="borda-preta">
+                    <input type="password" value="{{old('password')}}" name="password" placeholder="Senha"
+                           class="borda-preta">
                     {{ $errors->has('password') ? $errors->first('password') : ''}}
                     <button type="submit">Entrar</button>
                 </form>
+                {{isset($erro) && $erro != '' ? $erro : '' }}
             </div>
         </div>
     </div>
