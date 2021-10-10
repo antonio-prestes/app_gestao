@@ -7,25 +7,31 @@ use Illuminate\Http\Request;
 
 class LoginController extends Controller
 {
-    public function index(Request $request){
+    public function index(Request $request)
+    {
         $erro = '';
 
-        if ($request->get('erro')==1){
+        if ($request->get('erro') == 1) {
             $erro = 'Usuário ou senha incorreta';
         }
 
-        return view('site.login',['title'=>'Login', 'erro'=>$erro]);
+        if ($request->get('erro') == 2) {
+            $erro = 'Nessesário realizar login para ter acesso a página';
+        }
+
+        return view('site.login', ['title' => 'Login', 'erro' => $erro]);
     }
 
-    public function auth(Request $request){
+    public function auth(Request $request)
+    {
 
-        $regras =[
-            'user'=>'email',
-            'password'=>'required'
+        $regras = [
+            'user' => 'email',
+            'password' => 'required'
         ];
-        $feedback =[
-            'user.email'=>'Campo usuário (e-mail) é obrigatório',
-            'password.required'=>'O campo senha é obrigatorio'
+        $feedback = [
+            'user.email' => 'Campo usuário (e-mail) é obrigatório',
+            'password.required' => 'O campo senha é obrigatorio'
         ];
 
         $request->validate($regras, $feedback);
@@ -34,12 +40,17 @@ class LoginController extends Controller
         $password = $request->get('password');
 
         $user = new User();
-        $userExists = $user->where('email', $email)->where('password', $password)->get()->first();
+        $usuario = $user->where('email', $email)->where('password', $password)->get()->first();
 
-        if (isset($userExists->name)){
-            echo 'Usuário existe';
+        if (isset($usuario->name)) {
+
+            session_start();
+            $_SESSION['name'] = $usuario->name;
+            $_SESSION['email'] = $usuario->email;
+
+            return redirect()->route('app.clientes');
         } else {
-            return redirect()->route('site.login', ['erro'=>1]);
+            return redirect()->route('site.login', ['erro' => 1]);
         }
 
 
