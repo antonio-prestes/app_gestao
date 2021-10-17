@@ -40,7 +40,7 @@
                     </tbody>
 
                 </table>
-                </form>
+                {{ $fornecedores->appends($request)->links() }}
             </div>
         </div>
     </div>
