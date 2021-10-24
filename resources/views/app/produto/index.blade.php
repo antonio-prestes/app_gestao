@@ -35,6 +35,7 @@
                             <td>{{$produto->peso}} Kg</td>
                             <td>{{$produto->unidade_id}}</td>
                             <td>R$ {{$produto->preco_venda}}</td>
+                            <td><a href="{{ route('produto.show',['produto'=>$produto->id]) }}">Vizualizar</a></td>
                             <td><a href="">Excluir</a></td>
                             <td><a href="">Editar</a></td>
                         </tr>

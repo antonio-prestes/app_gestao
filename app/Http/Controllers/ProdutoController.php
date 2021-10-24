@@ -68,9 +68,10 @@ class ProdutoController extends Controller
      * @param \App\Models\Produto $produto
      * @return \Illuminate\Http\Response
      */
-    public function show(Produto $produto)
+    public function show(Produto $produto, Unidade $unidades)
     {
-        //
+        $unidades = Unidade::all();
+        return view('app.produto.show', ['produto'=>$produto, ['unidades' => $unidades]]);
     }
 
     /**
