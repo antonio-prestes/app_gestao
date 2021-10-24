@@ -25,7 +25,7 @@ class CreateProdutosTable extends Migration
             $table->timestamps();
 
             $table->foreign('unidade_id')->references('id')->on('unidades');
-            $table->unique('unidade_id');
+           // $table->unique('unidade_id');
         });
     }
 
