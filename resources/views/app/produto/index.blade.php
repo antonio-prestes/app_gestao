@@ -37,7 +37,7 @@
                             <td>R$ {{$produto->preco_venda}}</td>
                             <td><a href="{{ route('produto.show',['produto'=>$produto->id]) }}">Vizualizar</a></td>
                             <td><a href="">Excluir</a></td>
-                            <td><a href="">Editar</a></td>
+                            <td><a href="{{ route('produto.edit', ['produto'=>$produto->id]) }}">Editar</a></td>
                         </tr>
                     @endforeach
                     </tbody>
