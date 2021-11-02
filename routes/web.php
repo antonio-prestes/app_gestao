@@ -8,6 +8,7 @@ use App\Http\Controllers\FornecedorController;
 use App\Http\Controllers\ClienteController;
 use App\Http\Controllers\ProdutoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProdutoDetalheController;
 use App\Http\Middleware\LogAcessoMiddleware;
 use App\Http\Controllers\LoginController;
 
@@ -38,7 +39,7 @@ Route::prefix('/app')->middleware('autenticacao:padrao')->group(function () {
 
     Route::resource('produto', ProdutoController::class);
 
-    Route::resource('produto-detalhes', ProdutoController::class);
+    Route::resource('produto-detalhe', ProdutoDetalheController::class);
 
     Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
     Route::post('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');

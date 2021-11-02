@@ -1,18 +1,30 @@
-@if(isset($produto->id))
-    <form action="{{route('produto.update', ['produto'=>$produto_detalhe->id])}}" method="post">
+@if(isset($produto_detalhe->id))
+    <form action="{{route('produto-detalhe.update', ['produto_detalhe'=>$produto_detalhe->id])}}" method="post">
         @csrf
         @method('PUT')
         @else
-            <form action="{{route('produto_detalhe.store')}}" method="post">
+            <form action="{{route('produto-detalhe.store')}}" method="post">
                 @csrf
                 @endif
-                <input type="text" name="nome" value="{{$produto_detalhe->nome ?? old('nome')}}" placeholder="Nome"
+                <input type="text" name="produto_id" value="{{$produto_detalhe->produto_id ?? old('produto_id')}}"
+                       placeholder="ID do Produto"
                        class="borda-preta"/>
-                {{ $errors->has('nome') ? $errors->first('nome') : '' }}
-                <input type="text" name="descricao" value="{{$produto_detalhe->descricao ?? old('descricao')}}"
-                       placeholder="Descrição"
+                {{ $errors->has('produto_id') ? $errors->first('produto_id') : '' }}
+
+                <input type="number" name="comprimento" value="{{$produto_detalhe->comprimento ?? old('comprimento')}}"
+                       placeholder="Comprimento do produto"
                        class="borda-preta"/>
-                {{ $errors->has('descricao') ? $errors->first('descricao') : '' }}
+                {{ $errors->has('comprimento') ? $errors->first('comprimento') : '' }}
+
+                <input type="number" name="altura" value="{{$produto_detalhe->altura ?? old('altura')}}"
+                       placeholder="Altura do produto"
+                       class="borda-preta"/>
+                {{ $errors->has('altura') ? $errors->first('altura') : '' }}
+
+                <input type="number" name="largura" value="{{$produto_detalhe->largura ?? old('largura')}}"
+                       placeholder="Largura do produto"
+                       class="borda-preta"/>
+                {{ $errors->has('largura') ? $errors->first('largura') : '' }}
 
                 <select name="unidade_id">
                     <option value="">Selecione a unidade de medida</option>
@@ -21,18 +33,5 @@
                     @endforeach
                 </select>
 
-                <input type="number" name="peso" value="{{ $produto_detalhe->peso ?? old('peso')}}" placeholder="Peso"
-                       class="borda-preta"/>
-                {{ $errors->has('peso') ? $errors->first('peso') : '' }}
-                <input type="number" name="estoque_minimo"
-                       value="{{ $produto_detalhe->estoque_minimo ?? old('estoque_minimo')}}"
-                       placeholder="Estoque Minimo"
-                       class="borda-preta">
-                {{ $errors->has('estoque_minimo') ? $errors->first('estoque_minimo') : '' }}
-                <input type="number" name="estoque_maximo"
-                       value="{{ $produto_detalhe->estoque_maximo ?? old('estoque_maximo')}}"
-                       placeholder="Estoque Máximo"
-                       class="borda-preta">
-                {{ $errors->has('estoque_maximo') ? $errors->first('estoque_maximo') : '' }}
                 <button type="submit">Cadastrar</button>
             </form>
