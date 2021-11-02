@@ -38,6 +38,8 @@ Route::prefix('/app')->middleware('autenticacao:padrao')->group(function () {
 
     Route::resource('produto', ProdutoController::class);
 
+    Route::resource('produto-detalhes', ProdutoController::class);
+
     Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');
     Route::post('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
     Route::get('/fornecedor/listar', [FornecedorController::class, 'listar'])->name('app.fornecedor.listar');
