@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use App\Models\ProdutoDetalhe;
 use App\Models\Unidade;
 use Illuminate\Http\Request;
 
@@ -16,6 +17,8 @@ class ProdutoController extends Controller
     public function index(Request $request)
     {
         $produtos = Produto::paginate(10);
+
+
 
         return view('app.produto.index', ['produtos' => $produtos, 'request' => $request->all()]);
     }
@@ -83,7 +86,7 @@ class ProdutoController extends Controller
     public function edit(Produto $produto)
     {
         $unidades = Unidade::all();
-       return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
+        return view('app.produto.edit', ['produto' => $produto, 'unidades' => $unidades]);
         //return view('app.produto.create', ['produto' => $produto, 'unidades' => $unidades]);
     }
 

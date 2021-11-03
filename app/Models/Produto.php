@@ -10,4 +10,8 @@ class Produto extends Model
     use HasFactory;
 
     protected $fillable = ['nome', 'descricao', 'peso', 'unidade_id', 'preco_venda', 'estoque_minimo', 'estoque_maximo'];
+
+    public function produtoDetalhe() {
+        return $this->hasOne('App\Models\ProdutoDetalhe');
+    }
 }
