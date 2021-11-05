@@ -15,6 +15,7 @@ class CreateProdutosTable extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('fornecedor_id');
             $table->string('nome', 100);
             $table->text('descricao')->nullable();
             $table->integer('peso')->nullable();
@@ -25,6 +26,8 @@ class CreateProdutosTable extends Migration
             $table->timestamps();
 
             $table->foreign('unidade_id')->references('id')->on('unidades');
+            $table->foreign('fornecedor_id')->references('id')->on('fornecedores');
+           // $table->foreign('fornecedor_id')->references('id')->on('fornecedores');
            // $table->unique('unidade_id');
         });
     }
