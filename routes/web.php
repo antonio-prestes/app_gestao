@@ -43,7 +43,7 @@ Route::prefix('/app')->middleware('autenticacao:padrao')->group(function () {
     Route::resource('produto-detalhe', ProdutoDetalheController::class);
 
     Route::resource('pedido', PedidoController::class);
-    Route::resource('cliente', ClienteController::class);
+    Route::resource('clientes', ClienteController::class);
     Route::resource('pedido-produto', PedidoProdutoController::class);
 
     Route::get('/fornecedor', [FornecedorController::class, 'index'])->name('app.fornecedor');

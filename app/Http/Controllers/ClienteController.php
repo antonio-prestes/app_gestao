@@ -25,7 +25,7 @@ class ClienteController extends Controller
      */
     public function create()
     {
-        //
+        return view('app.clientes.create');
     }
 
     /**
@@ -36,7 +36,19 @@ class ClienteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $regras = [
+            'nome'=> 'required|min:3|max:40'
+        ];
+        $feedback = [
+            'required'=>'O campo :attribute deve ser preenchido',
+            'nome.min'=>'O campo deve ter no mínimo 3 caracteres',
+            'nome.max'=>'O cmapo deve ter no máximo 40 cartacteres'
+        ];
+
+        $request->validate($regras,$feedback);
+
+        Cliente::create($request->all());
+        return redirect()->route('clientes.index');
     }
 
     /**

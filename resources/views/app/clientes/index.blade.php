@@ -9,7 +9,7 @@
         </div>
         <div class="menu">
             <ul>
-                <li><a href="{{route('cliente.create')}}">Novo</a></li>
+                <li><a href="{{route('clientes.create')}}">Novo</a></li>
                 <li><a href="">Consulta</a></li>
             </ul>
         </div>
@@ -26,14 +26,14 @@
                     <tbody>
                     @foreach($clientes as $cliente)
                         <tr>
-                            <td>{{$clientes->nome}}</td>
+                            <td>{{$cliente->nome}}</td>
 
-                            <td><a href="{{ route('cliente.show',['cliente'=>$cliente->id]) }}">Vizualizar</a></td>
-                            <td><a href="{{ route('cliente.edit', ['cliente'=>$cliente->id]) }}">Editar</a></td>
+                            <td><a href="">Vizualizar</a></td>
+                            <td><a href="">Editar</a></td>
                             <td>
                                 <form id="form_{{$cliente->id}}"
                                       method="post"
-                                      action="{{ route('cliente.destroy', ['cliente'=>$cliente->id]) }}">
+                                      action="">
                                     @method('DELETE')
                                     @csrf
                                     <a href="#" onclick="document.getElementById('form_{{$cliente->id}}').submit()">Excluir</a>
