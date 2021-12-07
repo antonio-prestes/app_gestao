@@ -28,7 +28,7 @@
                         <tr>
                             <td>{{$pedido->id}}</td>
                             <td>{{$pedido->cliente_id}}</td>
-                            <td><a href="">Vizualizar</a></td>
+                            <td><a href="{{route('pedido-produto.create',['pedido'=>$pedido->id])}}">Adicionar Poduto</a></td>
                             <td><a href="">Editar</a></td>
                             <td>
                                 <form id="form_{{$pedido->id}}"
